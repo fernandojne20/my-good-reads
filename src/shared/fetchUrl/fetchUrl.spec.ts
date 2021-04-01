@@ -1,7 +1,11 @@
-import { expect } from 'chai';
+import * as chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 import fetchUrl from './fetchUrl';
 import sinon from 'sinon';
 import assert from 'assert';
+
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 
 declare global {
     namespace NodeJS {
