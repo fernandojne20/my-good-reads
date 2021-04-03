@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { getBooksByType } from './book-search.service';
-import { BookContainer, EmptySearch, Link } from './BookSearch.styled';
-import SearchParams from '../search-params/SearchParams';
+import {
+  BookContainer,
+  EmptySearch,
+  Link,
+  BookSearchContainer,
+} from './BookSearch.styled';
+import SearchParams from 'components/search-params/SearchParams';
+import Wishlist from 'components/wishlist';
+import { Book } from 'interfaces/Book';
+import BookList from 'components/book-list';
 
 const BookSearch = () => {
   const [initialSearch, updateInitialSearch] = useState('');
   const [bookTypeToSearch, updateBookTypeToSearch] = useState('');
-  const [allAvailableBooks, setAllAvailableBooks] = useState([]);
+  const [allAvailableBooks, setAllAvailableBooks] = useState<Book[]>([]);
 
   async function requestBooks() {
     if (bookTypeToSearch) {
@@ -22,7 +30,7 @@ const BookSearch = () => {
     getAllBooks();
   }, [bookTypeToSearch]);
   return (
-    <>
+    <BookSearchContainer>
       <BookContainer>
         <SearchParams
           updateBookTypeToSearch={updateBookTypeToSearch}
@@ -43,9 +51,10 @@ const BookSearch = () => {
             </p>
           </EmptySearch>
         )}
+        <BookList books={allAvailableBooks} />
       </BookContainer>
-      {<pre>{JSON.stringify(allAvailableBooks, null, 4)}</pre>}
-    </>
+      <Wishlist books={[]} />
+    </BookSearchContainer>
   );
 };
 

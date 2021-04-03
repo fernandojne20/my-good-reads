@@ -5,6 +5,8 @@ const BookContainer = styled.div`
   flex-flow: column nowrap;
   justify-content: space-around;
   align-items: stretch;
+  flex-grow: 3;
+  margin-right: ${(props) => props.theme.spacingxs};
 `;
 
 const EmptySearch = styled.div`
@@ -26,4 +28,11 @@ const Link = styled.a`
   }
 `;
 
-export { BookContainer, EmptySearch, Link };
+const BookSearchContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+`;
+
+export { BookContainer, EmptySearch, Link, BookSearchContainer };

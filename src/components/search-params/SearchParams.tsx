@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import {
   SearchParamsContainer,
   SearchForm,
@@ -8,10 +8,10 @@ interface SearchParamsProps {
   setSearch: string;
   updateBookTypeToSearch: (bookType: string) => void;
 }
-const SearchParams = ({
+const SearchParams: FunctionComponent<SearchParamsProps> = ({
   updateBookTypeToSearch,
   setSearch,
-}: SearchParamsProps) => {
+}) => {
   const [bookType, updateBookType] = useState('');
 
   useEffect(() => {
@@ -22,7 +22,6 @@ const SearchParams = ({
     <SearchParamsContainer>
       <SearchForm
         onSubmit={(e) => {
-          debugger;
           e.preventDefault();
           updateBookTypeToSearch(bookType);
         }}

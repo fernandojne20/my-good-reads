@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles/App.scss';
-import BookSearch from './book-search/BookSearch';
+import 'styles/App.scss';
+import BookSearch from 'components/book-search/BookSearch';
 import { ThemeProvider } from 'styled-components';
-import { Theme } from './styles/theme';
+import { Theme } from 'styles/theme';
 
 function App() {
   return (
