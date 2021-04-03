@@ -1,9 +1,12 @@
 import React from 'react';
 import './styles/App.scss';
 import BookSearch from './book-search/BookSearch';
+import { ThemeProvider } from 'styled-components';
+import { Theme } from './styles/theme';
 
 function App() {
   return (
+    <ThemeProvider theme={Theme}>
       <div>
         <header className="header">
           <div className="header--content">
@@ -11,10 +14,10 @@ function App() {
           </div>
         </header>
         <main>
-          <BookSearch/>
+          <BookSearch />
         </main>
-
       </div>
+    </ThemeProvider>
   );
 }
 
