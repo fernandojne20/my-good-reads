@@ -19,7 +19,7 @@ const bookList = (books: IBook[]) => {
     <Books>
       {books.map((book: IBook) => {
         return (
-          <Book>
+          <Book key={book.id}>
             <Name>{book.title} </Name>
             <Author>By {book.authors?.join(',')}</Author>
           </Book>

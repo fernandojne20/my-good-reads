@@ -10,11 +10,13 @@ import SearchParams from 'components/search-params/SearchParams';
 import Wishlist from 'components/wishlist';
 import { Book } from 'interfaces/Book';
 import BookList from 'components/book-list';
+import { useBookMachine } from 'hooks/useBookMachine';
 
 const BookSearch = () => {
   const [initialSearch, updateInitialSearch] = useState('');
   const [bookTypeToSearch, updateBookTypeToSearch] = useState('');
   const [allAvailableBooks, setAllAvailableBooks] = useState<Book[]>([]);
+  const { wishlist, addBook } = useBookMachine();
 
   async function requestBooks() {
     if (bookTypeToSearch) {
@@ -29,6 +31,7 @@ const BookSearch = () => {
     }
     getAllBooks();
   }, [bookTypeToSearch]);
+
   return (
     <BookSearchContainer>
       <BookContainer>
@@ -53,7 +56,7 @@ const BookSearch = () => {
         )}
         <BookList books={allAvailableBooks} />
       </BookContainer>
-      <Wishlist books={[]} />
+      <Wishlist books={wishlist} />
     </BookSearchContainer>
   );
 };
