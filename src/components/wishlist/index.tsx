@@ -21,7 +21,7 @@ const bookList = (books: IBook[]) => {
         return (
           <Book>
             <Name>{book.title} </Name>
-            <Author>{book.authors?.join(',')}</Author>
+            <Author>By {book.authors?.join(',')}</Author>
           </Book>
         );
       })}
