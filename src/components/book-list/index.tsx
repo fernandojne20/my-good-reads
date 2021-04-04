@@ -23,7 +23,7 @@ const BookList: FunctionComponent<BookListProps> = ({ books, addBook }) => {
       {books.map((book) => (
         <BookCard key={book.id}>
           <BookCover>
-            <BookImg src={book.coverUrl} />
+            <BookImg src={book.coverUrl} alt={book.title} />
           </BookCover>
           <BookDetails>
             <Title>{book.title}</Title>
