@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { getBooksByType } from './book-search.service';
+import React from 'react';
 import {
   BookContainer,
   EmptySearch,

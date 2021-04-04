@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 import {
   SearchParamsContainer,
   SearchForm,
@@ -13,6 +13,21 @@ const SearchParams: FunctionComponent<SearchParamsProps> = ({
   setSearch,
 }) => {
   const [debounceInterval, updateDebounceInterval] = useState<any>(0);
+
+  const onTyping = (e: React.ChangeEvent<HTMLInputElement>) => {
+    clearTimeout(debounceInterval);
+    const value = e.target.value;
+    searchBooks(value);
+
+    /* This debounce handle the case to detech when we have finished typing 
+    and search for the last value typed */
+    const interval = setTimeout(() => {
+      searchBooks(value);
+    }, 500);
+
+    updateDebounceInterval(interval);
+  };
+
   return (
     <SearchParamsContainer>
       <SearchForm
@@ -24,17 +39,7 @@ const SearchParams: FunctionComponent<SearchParamsProps> = ({
           autoFocus
           value={setSearch}
           placeholder="Search for books to add to your reading list and press Enter"
-          onChange={(e) => {
-            clearTimeout(debounceInterval);
-            const value = e.target.value;
-            searchBooks(value);
-
-            const interval = setTimeout(() => {
-              searchBooks(value);
-            }, 500);
-
-            updateDebounceInterval(interval);
-          }}
+          onChange={onTyping}
         />
       </SearchForm>
     </SearchParamsContainer>

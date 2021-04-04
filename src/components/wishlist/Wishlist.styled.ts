@@ -16,6 +16,7 @@ const WishListContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 20rem;
+  max-width: 22rem;
   padding: 0 1rem 1rem 1rem;
   border: 5px solid ${(props) => props.theme.blueAccent};
   border-radius: 10px;

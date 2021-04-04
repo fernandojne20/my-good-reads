@@ -5,6 +5,8 @@ import { Book } from 'interfaces/Book';
 const useBookMachine = () => {
   const [state, send] = useMachine(bookMachine);
 
+  const { wishlist, bookTypeToSearch, books } = state.context;
+
   const addBook = (book: Book) => {
     send({ type: 'ADD_BOOK', book });
   };
@@ -13,9 +15,9 @@ const useBookMachine = () => {
     send({ type: 'SEARCH.CHANGE', bookType });
   };
   return {
-    wishlist: state.context.wishlist,
-    bookTypeToSearch: state.context.bookTypeToSearch,
-    books: state.context.books,
+    wishlist,
+    bookTypeToSearch,
+    books,
     addBook,
     searchBooks,
   };
