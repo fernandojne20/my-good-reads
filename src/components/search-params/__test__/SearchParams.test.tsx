@@ -14,7 +14,7 @@ describe('SearchParams Component', () => {
 
     const searchBar = getByLabelText('gsearch');
 
-    expect(searchBar.value).toBe('Javascript');
+    expect((searchBar as HTMLInputElement).value).toBe('Javascript');
 
     fireEvent.change(searchBar, { target: { value: triggeredValue } });
 
@@ -25,6 +25,6 @@ describe('SearchParams Component', () => {
       <SearchParams searchBooks={searchBooksMock} setSearch={triggeredValue} />
     );
 
-    expect(searchBar.value).toBe('Serverless');
+    expect((searchBar as HTMLInputElement).value).toBe('Serverless');
   });
 });
