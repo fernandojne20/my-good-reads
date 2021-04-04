@@ -8,9 +8,16 @@ const useBookMachine = () => {
   const addBook = (book: Book) => {
     send({ type: 'ADD_BOOK', book });
   };
+
+  const searchBooks = (bookType: string) => {
+    send({ type: 'SEARCH.CHANGE', bookType });
+  };
   return {
     wishlist: state.context.wishlist,
+    bookTypeToSearch: state.context.bookTypeToSearch,
+    books: state.context.books,
     addBook,
+    searchBooks,
   };
 };
 

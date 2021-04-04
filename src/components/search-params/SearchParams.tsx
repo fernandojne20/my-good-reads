@@ -6,31 +6,35 @@ import {
 } from './SearchParams.styled';
 interface SearchParamsProps {
   setSearch: string;
-  updateBookTypeToSearch: (bookType: string) => void;
+  searchBooks: (bookType: string) => void;
 }
 const SearchParams: FunctionComponent<SearchParamsProps> = ({
-  updateBookTypeToSearch,
+  searchBooks,
   setSearch,
 }) => {
-  const [bookType, updateBookType] = useState('');
-
-  useEffect(() => {
-    if (setSearch) updateBookType(setSearch);
-  }, [setSearch]);
-
+  const [debounceInterval, updateDebounceInterval] = useState<any>(0);
   return (
     <SearchParamsContainer>
       <SearchForm
         onSubmit={(e) => {
           e.preventDefault();
-          updateBookTypeToSearch(bookType);
         }}
       >
         <SearchBar
           autoFocus
-          value={bookType}
+          value={setSearch}
           placeholder="Search for books to add to your reading list and press Enter"
-          onChange={(e) => updateBookType(e.target.value)}
+          onChange={(e) => {
+            clearTimeout(debounceInterval);
+            const value = e.target.value;
+            searchBooks(value);
+
+            const interval = setTimeout(() => {
+              searchBooks(value);
+            }, 500);
+
+            updateDebounceInterval(interval);
+          }}
         />
       </SearchForm>
     </SearchParamsContainer>

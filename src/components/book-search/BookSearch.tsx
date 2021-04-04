@@ -8,44 +8,29 @@ import {
 } from './BookSearch.styled';
 import SearchParams from 'components/search-params/SearchParams';
 import Wishlist from 'components/wishlist';
-import { Book } from 'interfaces/Book';
 import BookList from 'components/book-list';
 import { useBookMachine } from 'hooks/useBookMachine';
 
 const BookSearch = () => {
-  const [initialSearch, updateInitialSearch] = useState('');
-  const [bookTypeToSearch, updateBookTypeToSearch] = useState('');
-  const [allAvailableBooks, setAllAvailableBooks] = useState<Book[]>([]);
-  const { wishlist, addBook } = useBookMachine();
-
-  async function requestBooks() {
-    if (bookTypeToSearch) {
-      const allBooks = await getBooksByType(bookTypeToSearch);
-      setAllAvailableBooks(allBooks);
-    }
-  }
-
-  useEffect(() => {
-    async function getAllBooks() {
-      await requestBooks();
-    }
-    getAllBooks();
-  }, [bookTypeToSearch]);
+  const {
+    wishlist,
+    addBook,
+    searchBooks,
+    bookTypeToSearch,
+    books,
+  } = useBookMachine();
 
   return (
     <BookSearchContainer>
       <BookContainer>
-        <SearchParams
-          updateBookTypeToSearch={updateBookTypeToSearch}
-          setSearch={initialSearch}
-        />
+        <SearchParams searchBooks={searchBooks} setSearch={bookTypeToSearch} />
         {!bookTypeToSearch && (
           <EmptySearch>
             <p>
               Try searching for a topic, for example
               <Link
                 onClick={() => {
-                  updateInitialSearch('Javascript');
+                  searchBooks('Javascript');
                 }}
               >
                 {' '}
@@ -54,7 +39,7 @@ const BookSearch = () => {
             </p>
           </EmptySearch>
         )}
-        <BookList books={allAvailableBooks} addBook={addBook} />
+        <BookList books={books} addBook={addBook} />
       </BookContainer>
       <Wishlist books={wishlist} />
     </BookSearchContainer>
