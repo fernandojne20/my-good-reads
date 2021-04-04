@@ -6,7 +6,7 @@ const BookListContainer = styled.div`
   grid-gap: 10px;
 `;
 
-const BookCard = styled.div`
+const BookCard = styled.div.attrs({ role: 'book-card' })`
   background-color: white;
   display: flex;
   overflow: hidden;
