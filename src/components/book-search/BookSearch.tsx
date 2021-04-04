@@ -54,7 +54,7 @@ const BookSearch = () => {
             </p>
           </EmptySearch>
         )}
-        <BookList books={allAvailableBooks} />
+        <BookList books={allAvailableBooks} addBook={addBook} />
       </BookContainer>
       <Wishlist books={wishlist} />
     </BookSearchContainer>

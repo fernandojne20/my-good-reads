@@ -20,6 +20,8 @@ const WishListContainer = styled.div`
   border: 5px solid ${(props) => props.theme.blueAccent};
   border-radius: 10px;
   height: fit-content;
+  position: sticky;
+  top: 8.125rem;
 `;
 
 const Books = styled.ul`

@@ -64,6 +64,26 @@ const Description = styled.p`
   overflow: hidden;
 `;
 
+const AddButton = styled.button.attrs({ type: 'button' })`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.blueAccent};
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  padding: ${(props) => props.theme.spacingxxs} 0;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.gray10};
+  }
+`;
+
 export {
   BookListContainer,
   BookCard,
@@ -74,4 +94,5 @@ export {
   Title,
   Author,
   Published,
+  AddButton,
 };

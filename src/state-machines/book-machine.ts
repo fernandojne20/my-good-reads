@@ -1,4 +1,5 @@
 import { createMachine, assign } from 'xstate';
+import { Book } from 'interfaces/Book';
 
 const bookMachine = createMachine<any, any, any>({
   id: 'bookMachine',
@@ -13,6 +14,11 @@ const bookMachine = createMachine<any, any, any>({
     ADD_BOOK: {
       actions: assign({
         wishlist: (context, event) => {
+          if (
+            context.wishlist.find((book: Book) => book.id === event.book.id)
+          ) {
+            return context.wishlist;
+          }
           return [...context.wishlist, event.book];
         },
       }),

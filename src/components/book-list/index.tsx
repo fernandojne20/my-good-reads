@@ -10,12 +10,14 @@ import {
   Title,
   Author,
   Published,
+  AddButton,
 } from './BookList.styled';
 
 interface BookListProps {
   books: Book[];
+  addBook: (book: Book) => void;
 }
-const BookList: FunctionComponent<BookListProps> = ({ books }) => {
+const BookList: FunctionComponent<BookListProps> = ({ books, addBook }) => {
   return (
     <BookListContainer>
       {books.map((book) => (
@@ -42,6 +44,7 @@ const BookList: FunctionComponent<BookListProps> = ({ books }) => {
               </Published>
             )}
             <Description>{book.description}</Description>
+            <AddButton onClick={() => addBook(book)}>Wishlist</AddButton>
           </BookDetails>
         </BookCard>
       ))}
