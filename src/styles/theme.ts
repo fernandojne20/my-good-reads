@@ -1,0 +1,25 @@
+import { DefaultTheme } from "styled-components";
+
+export const Theme: DefaultTheme = {
+  blueAccent: "#3665f3",
+  blueDark: "#052da5",
+  gray05: "#f8f8f8",
+  gray10: "#f2f2f2",
+  gray20: "#e8e8e8",
+  gray30: "#cccccc",
+  gray40: "#9b9b9b",
+  gray60: "#6a6a6a",
+  gray70: "#4c4c4c",
+  gray80: "#333333",
+  gray85: "#262626",
+  black: "#000000",
+  white: "#ffffff",
+  spacing3xs: "0.25rem",
+  spacingxxs: "0.5rem",
+  spacingxs: "1rem",
+  spacingsm: "1.5rem",
+  spacingmed: "2.5rem",
+  spacinglg: "1.625rem",
+  spacingxl: "5rem",
+  spacingxxl: "7.5rem",
+};
