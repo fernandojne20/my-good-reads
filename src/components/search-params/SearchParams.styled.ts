@@ -8,7 +8,11 @@ const SearchForm = Styled.form`
   margin-bottom: ${(props) => props.theme.spacingxs};
 `;
 
-const SearchBar = Styled.input.attrs({ name: 'gsearch', type: 'search' })`
+const SearchBar = Styled.input.attrs({
+  name: 'gsearch',
+  type: 'search',
+  'aria-label': 'gsearch',
+})`
   width: 100%;
 `;
 

@@ -29,7 +29,7 @@ const Books = styled.ul`
   list-style-type: none;
   padding: 0;
 `;
-const Book = styled.li`
+const Book = styled.li.attrs({ role: 'listitems' })`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.gray10};
